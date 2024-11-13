@@ -51,7 +51,7 @@ AnimatorState:
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
-  m_TimeParameter: 
+  m_TimeParameter: Speed
 --- !u!114 &-8370188350606430675
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -158,7 +158,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: CrouchIdle
-  m_Speed: 0
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -2033498272313818877}
@@ -378,7 +378,7 @@ AnimatorStateMachine:
     m_Position: {x: -330, y: 300, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8450440007435119138}
-    m_Position: {x: 330, y: 770, z: 0}
+    m_Position: {x: 350, y: 820, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -6177901722397990462}
     m_Position: {x: 450, y: 680, z: 0}
@@ -637,6 +637,12 @@ AnimatorController:
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
   - m_Name: IsCrouching
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: IsCrouchWalk
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -1054,6 +1060,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 4
     m_ConditionEvent: Speed
     m_EventTreshold: 1
+  - m_ConditionMode: 2
+    m_ConditionEvent: IsCrouchWalk
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -6177901722397990462}
   m_Solo: 0
@@ -1064,7 +1073,7 @@ AnimatorStateTransition:
   m_TransitionOffset: 0
   m_ExitTime: 0.516129
   m_HasExitTime: 0
-  m_HasFixedDuration: 1
+  m_HasFixedDuration: 0
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
