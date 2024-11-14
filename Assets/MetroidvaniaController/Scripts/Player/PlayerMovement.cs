@@ -26,6 +26,24 @@ public class PlayerMovement : MonoBehaviour {
 
 		horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
 
+		// Verifica se o jogador está se movendo e se está agachado
+		if (controller.IsCrouching && Mathf.Abs(horizontalMove) > 2)
+		{
+			animator.SetBool("CrouchWalk", true); // Ativa a animação de CrouchWalk
+			controller.Crouch(true); // Mantém o agachamento
+			animator.SetBool("IsRunning", false); // Desativa a animação de correr
+		}
+		else if (controller.IsCrouching) // Se ainda estiver agachado, mas não em movimento rápido
+		{
+			animator.SetBool("CrouchWalk", false); // Desativa a animação de CrouchWalk
+			animator.SetBool("IsRunning", false); // Desativa a animação de correr
+		}
+		else
+		{
+			animator.SetBool("CrouchWalk", false); // Desativa a animação de CrouchWalk
+			animator.SetBool("IsRunning", Mathf.Abs(horizontalMove) > 0); // Ativa a animação de correr se houver movimento
+		}
+
 		animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
 		if (Input.GetKeyDown(KeyCode.W) && !controller.IsCrouching)
