@@ -12,7 +12,7 @@ public class Combo : MonoBehaviour
     private bool isAttacking = false;
     private bool inputQueued = false;
 
-    private static readonly int IsAttacking = Animator.StringToHash("IsAttacking");
+    private static readonly int IsComboActive = Animator.StringToHash("IsComboActive");
     private static readonly int Attack1 = Animator.StringToHash("Attack1");
     private static readonly int Attack2 = Animator.StringToHash("Attack2");
     private static readonly int Attack3 = Animator.StringToHash("Attack3");
@@ -51,7 +51,7 @@ public class Combo : MonoBehaviour
         canReceiveInput = false;
         isAttacking = true;
         
-        animator.SetBool(IsAttacking, true);
+        animator.SetBool(IsComboActive, true);
 
         // Reset all triggers first
         animator.ResetTrigger(Attack1);
@@ -97,7 +97,7 @@ public class Combo : MonoBehaviour
         if (!inputQueued)
         {
             isAttacking = false;
-            animator.SetBool(IsAttacking, false);
+            animator.SetBool(IsComboActive, false);
             ResetCombo();
         }
     }
@@ -109,6 +109,6 @@ public class Combo : MonoBehaviour
         isAttacking = false;
         canReceiveInput = true;
         inputQueued = false;
-        animator.SetBool(IsAttacking, false);
+        animator.SetBool(IsComboActive, false);
     }
 }
