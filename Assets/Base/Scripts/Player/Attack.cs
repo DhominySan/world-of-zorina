@@ -9,7 +9,7 @@ public class Attack : MonoBehaviour
 	public Transform attackCheck;
 	private Rigidbody2D m_Rigidbody2D;
 	public Animator animator;
-	public bool canAttack = true;
+	public bool canAttack = false;
 	public bool isTimeToCheck = false;
 
 	public GameObject cam;
@@ -67,4 +67,9 @@ public class Attack : MonoBehaviour
 			}
 		}
 	}
+	public void EnableAttack()
+    {
+        canAttack = true;
+        Debug.Log("Ataque habilitado!");
+    }
 }
