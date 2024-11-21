@@ -7,7 +7,7 @@ public struct SoundEffect
     public AudioClip[] clips;
 }
 
-public class SoundLibrary : MonoBehaviour
+public class SoundLibraryy : MonoBehaviour
 {
     public SoundEffect[] soundEffects;
 
@@ -17,7 +17,7 @@ public class SoundLibrary : MonoBehaviour
         {
 			if (soundEffect.groupID == name)
             {
-				return soundEffect.clips[Random.Range(0, soundEffect.clips.Length)];
+				return soundEffect.clips[Random.Range(0, soundEffect.clips.Length)]; ///
             }
         }
 		return null;

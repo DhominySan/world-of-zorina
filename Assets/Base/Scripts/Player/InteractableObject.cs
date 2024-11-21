@@ -29,6 +29,7 @@ public class InteractableObject : MonoBehaviour
         {
             if (playerAttack != null)
             {
+                SoundManager.Instance.PlaySound3D("Pickup", transform.position);
                 playerAttack.EnableAttack();
                 Destroy(gameObject);
             }

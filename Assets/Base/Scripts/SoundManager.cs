@@ -5,7 +5,7 @@ public class SoundManager : MonoBehaviour
     public static SoundManager Instance;
 
     [SerializeField]
-    private SoundLibrary sfxLibrary;
+    private SoundLibraryy sfxLibrary;
     [SerializeField]
     private AudioSource sfx2DSource;
 
