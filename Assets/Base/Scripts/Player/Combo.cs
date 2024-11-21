@@ -63,12 +63,15 @@ public class Combo : MonoBehaviour
         {
             case 1:
                 animator.SetTrigger(Attack1);
+                Debug.Log("Combo 1 triggered");
                 break;
             case 2:
                 animator.SetTrigger(Attack2);
+                Debug.Log("Combo 2 triggered");
                 break;
             case 3:
                 animator.SetTrigger(Attack3);
+                Debug.Log("Combo 3 triggered");
                 break;
         }
 
@@ -101,6 +104,7 @@ public class Combo : MonoBehaviour
 
     private void ResetCombo()
     {
+        Debug.Log("Resetting combo: " + currentCombo);
         currentCombo = 0;
         isAttacking = false;
         canReceiveInput = true;
