@@ -1,48 +1,110 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Combo : MonoBehaviour
 {
-    public Animator ani;
-    public int combo;
-    public bool atacando;
-    public AudioSource audio_S;
-    public AudioClip[] sonido;
-    // Start is called before the first frame update
-    void Start()
+    [Header("Components")]
+    [SerializeField] private Animator animator;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip[] comboSounds;
+
+    private int currentCombo = 0;
+    private bool canReceiveInput = true;
+    private bool isAttacking = false;
+    private bool inputQueued = false;
+
+    private static readonly int IsAttacking = Animator.StringToHash("IsAttacking");
+    private static readonly int Attack1 = Animator.StringToHash("Attack1");
+    private static readonly int Attack2 = Animator.StringToHash("Attack2");
+    private static readonly int Attack3 = Animator.StringToHash("Attack3");
+
+    private void Start()
     {
-        ani  = GetComponent<Animator>();
-        audio_S = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
+        animator = GetComponent<Animator>();
     }
 
-    public void Start_Combos()
+    private void Update()
     {
-        atacando = false;
-        if(combo<3)
+        if (!Input.GetKeyDown(KeyCode.O)) return;
+        
+        if (canReceiveInput)
         {
-            combo++;
+            if (isAttacking)
+            {
+                if (currentCombo < 3)
+                {
+                    inputQueued = true;
+                    currentCombo++;
+                    TriggerAttack();
+                }
+            }
+            else
+            {
+                currentCombo = 1;
+                TriggerAttack();
+            }
         }
     }
 
-    public void Finish_Ani()
+    private void TriggerAttack()
     {
-        atacando = false;
-        combo = 0;
-    }
-    public void Combos_()
-    {
-        if (Input.GetKeyDown(KeyCode.O) && !atacando)
+        canReceiveInput = false;
+        isAttacking = true;
+        
+        animator.SetBool(IsAttacking, true);
+
+        // Reset all triggers first
+        animator.ResetTrigger(Attack1);
+        animator.ResetTrigger(Attack2);
+        animator.ResetTrigger(Attack3);
+
+        // Then set the new trigger
+        switch (currentCombo)
         {
-            atacando = true;
-            ani.SetTrigger(""+combo);
-            audio_S.clip = sonido[combo];
-            audio_S.Play();
+            case 1:
+                animator.SetTrigger(Attack1);
+                break;
+            case 2:
+                animator.SetTrigger(Attack2);
+                break;
+            case 3:
+                animator.SetTrigger(Attack3);
+                break;
+        }
+
+        if (comboSounds.Length >= currentCombo && comboSounds[currentCombo - 1] != null)
+        {
+            audioSource.PlayOneShot(comboSounds[currentCombo - 1]);
         }
     }
-    // Update is called once per frame
-    void Update()
+
+    // Called by animation events
+    public void EnableComboInput()
     {
-        Combos_();
+        canReceiveInput = true;
+        if (inputQueued)
+        {
+            inputQueued = false;
+        }
+    }
+
+    // Called by animation events at the end of attack animations
+    public void OnAttackComplete()
+    {
+        if (!inputQueued)
+        {
+            isAttacking = false;
+            animator.SetBool(IsAttacking, false);
+            ResetCombo();
+        }
+    }
+
+    private void ResetCombo()
+    {
+        currentCombo = 0;
+        isAttacking = false;
+        canReceiveInput = true;
+        inputQueued = false;
+        animator.SetBool(IsAttacking, false);
     }
 }
