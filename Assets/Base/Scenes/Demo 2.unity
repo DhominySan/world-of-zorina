@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -309,10 +308,50 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 519420028}
-    m_RemovedComponents: []
+    - target: {fileID: 3816426706932757391, guid: 50936cccdb69523458c1b42052ebafff, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.48162842
+      objectReference: {fileID: 0}
+    - target: {fileID: 3816426706932757391, guid: 50936cccdb69523458c1b42052ebafff, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.8763755
+      objectReference: {fileID: 0}
+    - target: {fileID: 3816426706932757391, guid: 50936cccdb69523458c1b42052ebafff, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -122.416
+      objectReference: {fileID: 0}
+    - target: {fileID: 4739187669728719524, guid: 50936cccdb69523458c1b42052ebafff, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.99884486
+      objectReference: {fileID: 0}
+    - target: {fileID: 4739187669728719524, guid: 50936cccdb69523458c1b42052ebafff, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.048051078
+      objectReference: {fileID: 0}
+    - target: {fileID: 4739187669728719524, guid: 50936cccdb69523458c1b42052ebafff, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 5.508
+      objectReference: {fileID: 0}
+    - target: {fileID: 5135145178349333943, guid: 50936cccdb69523458c1b42052ebafff, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.8133212
+      objectReference: {fileID: 0}
+    - target: {fileID: 5135145178349333943, guid: 50936cccdb69523458c1b42052ebafff, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.581815
+      objectReference: {fileID: 0}
+    - target: {fileID: 5135145178349333943, guid: 50936cccdb69523458c1b42052ebafff, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 71.157
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114435281327171648, guid: 50936cccdb69523458c1b42052ebafff, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8933655006330048964, guid: 50936cccdb69523458c1b42052ebafff, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 961827820}
   m_SourcePrefab: {fileID: 100100000, guid: 50936cccdb69523458c1b42052ebafff, type: 3}
 --- !u!1 &68362602
 GameObject:
@@ -2752,6 +2791,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &743772665 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4370582630649528, guid: 50936cccdb69523458c1b42052ebafff, type: 3}
+  m_PrefabInstance: {fileID: 62552057}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &758431843
 GameObject:
   m_ObjectHideFlags: 0
@@ -3657,6 +3701,35 @@ Transform:
   - {fileID: 1593626607}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &961827815 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8933655006330048964, guid: 50936cccdb69523458c1b42052ebafff, type: 3}
+  m_PrefabInstance: {fileID: 62552057}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &961827816 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2935245193628664570, guid: 50936cccdb69523458c1b42052ebafff, type: 3}
+  m_PrefabInstance: {fileID: 62552057}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &961827820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 961827815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9955788a5eaffa49a9297f38eaa6202, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dmgValue: 4
+  throwableObject: {fileID: 5532974359214069763, guid: 340067e8e5a097546ad175f1d00a6ece, type: 3}
+  attackCheck: {fileID: 743772665}
+  animator: {fileID: 961827816}
+  canAttack: 1
+  isTimeToCheck: 0
+  cam: {fileID: 519420028}
 --- !u!1 &968126350
 GameObject:
   m_ObjectHideFlags: 0

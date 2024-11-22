@@ -67,7 +67,7 @@ public class CharacterController2D : MonoBehaviour
 	private void Awake()
 	{
 		m_Rigidbody2D = GetComponent<Rigidbody2D>();
-		animator = GetComponent<Animator>();
+		animator = GetComponentInChildren<Animator>();
 		capsuleCollider = GetComponent<CapsuleCollider2D>(); // Inicializa o CapsuleCollider
 		originalHeight = capsuleCollider.size.y; // Armazena a altura original
 		originalCenter = capsuleCollider.offset; // Armazena o centro original

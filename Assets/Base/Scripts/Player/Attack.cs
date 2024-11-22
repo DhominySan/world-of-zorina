@@ -28,7 +28,7 @@ public class Attack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		if (Input.GetKeyDown(KeyCode.X) && canAttack && !GetComponent<CharacterController2D>().IsCrouching)
+		if (Input.GetKeyDown(KeyCode.X) && canAttack && !GetComponentInParent<CharacterController2D>().IsCrouching)
 		{
 			canAttack = false;
 			animator.SetBool("IsAttacking", true);
