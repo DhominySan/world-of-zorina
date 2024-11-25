@@ -16,6 +16,11 @@ public class MenuParallax : MonoBehaviour
     private void Update()
     {
         Vector2 offset = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+        
+        // Limitar o alcance do offset
+        offset.x = Mathf.Clamp(offset.x, -1f, 1f); // Limita o movimento horizontal
+        offset.y = Mathf.Clamp(offset.y, -1f, 1f); // Limita o movimento vertical
+
         transform.position = Vector3.SmoothDamp(transform.position, startPosition + (offset * offsetMultiplier), ref velocity, smoothTime);
     }
 }
