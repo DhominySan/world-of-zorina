@@ -17,8 +17,7 @@ public class MainMenu : MonoBehaviour
 
     public void Play()
     {
-        SceneManager.LoadScene("Demo 3");
-        //LevelManager.Instance.LoadScene("Demo 3, "CrossFade");
+        LevelManager.Instance.LoadScene("Demo 3","CrossFade");
        // MusicManager.Instance.PlayMusic("Game");
     }
 
