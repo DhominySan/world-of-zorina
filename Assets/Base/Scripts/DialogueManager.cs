@@ -14,6 +14,8 @@ public class DialogueManager : MonoBehaviour
 
     public Image additionalImage;
 
+    public TextMeshProUGUI additionalNameText;
+
     private Queue<DialogueLine> lines;
     
 	public bool isDialogueActive = false;
@@ -61,15 +63,23 @@ public class DialogueManager : MonoBehaviour
 
 		additionalImage.sprite = currentLine.additionalImage;
 
+		additionalNameText.text = currentLine.additionalName;
+
 		if (currentLine.Secundaria)
 		{
 			additionalImage.color = Color.white;
 			characterIcon.color = new Color(1, 1, 1, 0.5f);
+
+			characterName.color = Color.white;
+			additionalNameText.color = new Color(1, 1, 1, 0.5f);
 		}
 		else
 		{
 			characterIcon.color = Color.white;
 			additionalImage.color = new Color(1, 1, 1, 0.5f);
+
+			additionalNameText.color = Color.white;
+			characterName.color = new Color(1, 1, 1, 0.5f);
 		}
 
 		StopAllCoroutines();

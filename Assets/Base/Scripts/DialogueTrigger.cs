@@ -16,6 +16,7 @@ public class DialogueLine
     public string line;
     public Sprite additionalImage;
     public bool Secundaria;
+    public string additionalName;
 }
 
 [System.Serializable]
