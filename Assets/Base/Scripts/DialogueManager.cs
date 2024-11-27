@@ -67,19 +67,19 @@ public class DialogueManager : MonoBehaviour
 
 		if (currentLine.Secundaria)
 		{
+			characterName.color = new Color(1, 1, 1, 0.5f);
+			additionalNameText.color = Color.white;
+
 			additionalImage.color = Color.white;
 			characterIcon.color = new Color(1, 1, 1, 0.5f);
-
-			characterName.color = Color.white;
-			additionalNameText.color = new Color(1, 1, 1, 0.5f);
 		}
 		else
 		{
+			characterName.color = Color.white;
+			additionalNameText.color = new Color(1, 1, 1, 0.5f);
+
 			characterIcon.color = Color.white;
 			additionalImage.color = new Color(1, 1, 1, 0.5f);
-
-			additionalNameText.color = Color.white;
-			characterName.color = new Color(1, 1, 1, 0.5f);
 		}
 
 		StopAllCoroutines();
