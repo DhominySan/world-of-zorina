@@ -51,9 +51,9 @@ public class LevelManager : MonoBehaviour
         {
             progressBar.value = scene.progress;
             yield return null;
-        } while (scene.progress < 0.9f);
+        } while (scene.progress < 0.2f);
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.2f);
 
         scene.allowSceneActivation = true;
 
