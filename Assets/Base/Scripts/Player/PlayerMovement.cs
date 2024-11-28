@@ -57,12 +57,12 @@ public class PlayerMovement : MonoBehaviour {
 		}
 
 		// Raycast para verificar colisão acima do jogador
-		RaycastHit2D hit = Physics2D.Raycast(transform.position + Vector3.up * 2.5f, Vector2.up, 0.2f); // Ajuste a distância conforme necessário
+		RaycastHit2D hit = Physics2D.Raycast(transform.position + Vector3.up * 0f, Vector2.up, 1f); // Ajuste a distância conforme necessário
 
 		// Debug para visualizar o Raycast
-		Debug.DrawRay(transform.position + Vector3.up * 2.5f, Vector2.up * 0.2f, Color.red); // Desenha o Raycast em vermelho
+		Debug.DrawRay(transform.position + Vector3.up * 0f, Vector2.up * 1f, Color.red); // Desenha o Raycast em vermelho
 
-		if (hit.collider != null) // Se houver uma colisão
+		if (hit.collider != null && hit.collider.CompareTag("Ceiling")) // Se houver uma colisão com a tag "Ceiling"
 		{
 			controller.Crouch(true); // Mantém o agachamento
 			runSpeed = originalRunSpeed / 2; // Reduz a velocidade para um terço
