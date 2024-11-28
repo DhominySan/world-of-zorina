@@ -9,19 +9,13 @@ public class DialogueManager : MonoBehaviour
     public static DialogueManager Instance;
 
 	public Image characterIcon;
+    public Image npcIcon;
 	public TextMeshProUGUI characterName;
+    public TextMeshProUGUI npcName;
     public TextMeshProUGUI dialogueArea;
-
-    public Image additionalImage;
-
-    public TextMeshProUGUI additionalNameText;
-
     private Queue<DialogueLine> lines;
-    
 	public bool isDialogueActive = false;
-
 	public float typingSpeed = 0.2f;
-
 	public Animator animator;
 
     private void Awake()
@@ -58,28 +52,27 @@ public class DialogueManager : MonoBehaviour
 
 		DialogueLine currentLine = lines.Dequeue();
 
-		characterIcon.sprite = currentLine.character.icon;
-		characterName.text = currentLine.character.name;
+		characterIcon.sprite = currentLine.characters.icon;
+		characterName.text = currentLine.characters.name;
 
-		additionalImage.sprite = currentLine.additionalImage;
+		npcIcon.sprite = currentLine.characters.npcIcon;
+		npcName.text = currentLine.characters.npcName;
 
-		additionalNameText.text = currentLine.additionalName;
-
-		if (currentLine.Secundaria)
+		if (currentLine.NPCSpeaking)
 		{
 			characterName.color = new Color(1, 1, 1, 0.5f);
-			additionalNameText.color = Color.white;
+			npcName.color = Color.white;
 
-			additionalImage.color = Color.white;
+			npcIcon.color = Color.white;
 			characterIcon.color = new Color(1, 1, 1, 0.5f);
 		}
 		else
 		{
 			characterName.color = Color.white;
-			additionalNameText.color = new Color(1, 1, 1, 0.5f);
+			npcName.color = new Color(1, 1, 1, 0.5f);
 
 			characterIcon.color = Color.white;
-			additionalImage.color = new Color(1, 1, 1, 0.5f);
+			npcIcon.color = new Color(1, 1, 1, 0.5f);
 		}
 
 		StopAllCoroutines();

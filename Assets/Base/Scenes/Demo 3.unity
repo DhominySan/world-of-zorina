@@ -4504,7 +4504,7 @@ GameObject:
   - component: {fileID: 1060905857}
   - component: {fileID: 1060905856}
   m_Layer: 5
-  m_Name: AvatarIcon (1)
+  m_Name: NpcIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4709,7 +4709,7 @@ GameObject:
   - component: {fileID: 1067016652}
   - component: {fileID: 1067016651}
   m_Layer: 5
-  m_Name: TextoEscrito
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4886,10 +4886,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterIcon: {fileID: 965352001}
+  npcIcon: {fileID: 1060905856}
   characterName: {fileID: 2083890879}
+  npcName: {fileID: 1360203755}
   dialogueArea: {fileID: 1067016651}
-  additionalImage: {fileID: 1060905856}
-  additionalNameText: {fileID: 1360203755}
   isDialogueActive: 0
   typingSpeed: 0.06
   animator: {fileID: 1114337051}
@@ -7587,21 +7587,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
     dialogueLines:
-    - character:
+    - characters:
         name: Zorina
         icon: {fileID: 21300000, guid: 1564b38efdfde904b953513fd4d31dbc, type: 3}
+        npcIcon: {fileID: 21300000, guid: 6654a688037cf7046aefcc85fde02365, type: 3}
+        npcName: Pessoa FDS?
       line: "isso n\xE3o \xE9 apenas um teste, voc\xEA esta se comunicando com a
         matrix..."
-      additionalImage: {fileID: 21300000, guid: 6654a688037cf7046aefcc85fde02365, type: 3}
-      Secundaria: 1
-      additionalName: Hayuri
-    - character:
+      NPCSpeaking: 1
+    - characters:
         name: Zorina
         icon: {fileID: 21300000, guid: 1564b38efdfde904b953513fd4d31dbc, type: 3}
+        npcIcon: {fileID: 21300000, guid: 6654a688037cf7046aefcc85fde02365, type: 3}
+        npcName: Pessoa FDS?
       line: "N\xE9 possivi..."
-      additionalImage: {fileID: 21300000, guid: 6654a688037cf7046aefcc85fde02365, type: 3}
-      Secundaria: 0
-      additionalName: Hayuri
+      NPCSpeaking: 0
 --- !u!61 &1707003065
 BoxCollider2D:
   m_ObjectHideFlags: 0

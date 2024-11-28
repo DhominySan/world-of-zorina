@@ -5,18 +5,18 @@ using UnityEngine;
 public class DialogueCharacter
 {
     public string name;
+    public string npcName;
     public Sprite icon;
+    public Sprite npcIcon;
 }
 
 [System.Serializable]
 public class DialogueLine
 {
-    public DialogueCharacter character;
+    public DialogueCharacter characters;
     [TextArea(3, 10)]
     public string line;
-    public Sprite additionalImage;
-    public bool Secundaria;
-    public string additionalName;
+    public bool NPCSpeaking;
 }
 
 [System.Serializable]
