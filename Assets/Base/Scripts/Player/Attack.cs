@@ -50,7 +50,7 @@ public class Attack : MonoBehaviour
 		canAttack = true;
 	}
 
-	public void DoDashDamage()
+	public void DoDamage()
 	{
 		dmgValue = Mathf.Abs(dmgValue);
 		Collider2D[] collidersEnemies = Physics2D.OverlapCircleAll(attackCheck.position, 0.9f);
@@ -63,7 +63,7 @@ public class Attack : MonoBehaviour
 					dmgValue = -dmgValue;
 				}
 				collidersEnemies[i].gameObject.SendMessage("ApplyDamage", dmgValue);
-				cam.GetComponent<CameraFollow>().ShakeCamera();
+
 			}
 		}
 	}
