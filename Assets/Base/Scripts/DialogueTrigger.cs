@@ -37,6 +37,12 @@ public class DialogueTrigger : MonoBehaviour
             return;
         }
 
+        if (DialogueManager.Instance.isDialogueActive)
+        {
+            Debug.Log("Diálogo já está em andamento!");
+            return;
+        }
+
         if (dialogue == null)
         {
             Debug.LogError("Diálogo não atribuído!");
