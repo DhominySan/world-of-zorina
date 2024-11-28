@@ -46,6 +46,16 @@ public class DialogueTrigger : MonoBehaviour
         DialogueManager.Instance.StartDialogue(dialogue);
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E) && isPlayerInTrigger)
+        {
+            TriggerDialogue();
+        }
+    }
+
+    private bool isPlayerInTrigger = false;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision == null)
@@ -56,7 +66,15 @@ public class DialogueTrigger : MonoBehaviour
 
         if(collision.tag == "Player")
         {
-            TriggerDialogue();
+            isPlayerInTrigger = true; // Marca que o jogador está na área de colisão
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision != null && collision.tag == "Player")
+        {
+            isPlayerInTrigger = false; // Marca que o jogador saiu da área de colisão
         }
     }
 }
