@@ -30,6 +30,8 @@ public class DialogueManager : MonoBehaviour
 	{
 		isDialogueActive = true;
 
+		DisablePlayerScripts();
+
 		animator.Play("show");
 
 		lines.Clear();
@@ -93,6 +95,31 @@ public class DialogueManager : MonoBehaviour
 	void EndDialogue()
 	{
 		isDialogueActive = false;
+
+		EnablePlayerScripts();
+
 		animator.Play("hide");
+	}
+
+	private void DisablePlayerScripts()
+	{
+		PlayerMovement playerMovement = FindObjectOfType<PlayerMovement>();
+		CharacterController2D characterController = FindObjectOfType<CharacterController2D>();
+		Attack attack = FindObjectOfType<Attack>();
+
+		if (playerMovement != null) playerMovement.enabled = false;
+		if (characterController != null) characterController.enabled = false;
+		if (attack != null) attack.enabled = false;
+	}
+
+	private void EnablePlayerScripts()
+	{
+		PlayerMovement playerMovement = FindObjectOfType<PlayerMovement>();
+		CharacterController2D characterController = FindObjectOfType<CharacterController2D>();
+		Attack attack = FindObjectOfType<Attack>();
+
+		if (playerMovement != null) playerMovement.enabled = true;
+		if (characterController != null) characterController.enabled = true;
+		if (attack != null) attack.enabled = true;
 	}
 }

@@ -31,6 +31,12 @@ public class DialogueTrigger : MonoBehaviour
 
     public void TriggerDialogue()
     {
+        if (PauseGame.IsGamePaused())
+        {
+            Debug.Log("Não é possível iniciar o diálogo enquanto o jogo está pausado!");
+            return;
+        }
+
         if (DialogueManager.Instance == null)
         {
             Debug.LogError("DialogueManager não está inicializado!");
