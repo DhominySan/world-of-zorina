@@ -5,16 +5,15 @@ using UnityEngine;
 public class PlaySoundBehaviour : StateMachineBehaviour
 {
     private AudioSource audioSource;
-    public AudioClip audioSound;
+    public string soundName;
     public bool loop = false;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         audioSource = animator.transform.GetComponent<AudioSource>();
-        audioSource.clip = audioSound;
         audioSource.loop = loop;
-        audioSource.Play();
+        SoundManager.Instance.PlaySound2D(soundName);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

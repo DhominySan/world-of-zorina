@@ -6,6 +6,7 @@ public class Combo : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip[] comboSounds;
+    [SerializeField] private SoundManager soundManager;
 
     private int currentCombo = 0;
     private bool canReceiveInput = true;
@@ -21,6 +22,7 @@ public class Combo : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
+        soundManager = FindObjectOfType<SoundManager>();
     }
 
     private void Update()
@@ -64,20 +66,18 @@ public class Combo : MonoBehaviour
             case 1:
                 animator.SetTrigger(Attack1);
                 Debug.Log("Combo 1 triggered");
+                soundManager.PlaySound2D("ComboSound1");
                 break;
             case 2:
                 animator.SetTrigger(Attack2);
                 Debug.Log("Combo 2 triggered");
+                soundManager.PlaySound2D("ComboSound2");
                 break;
             case 3:
                 animator.SetTrigger(Attack3);
                 Debug.Log("Combo 3 triggered");
+                soundManager.PlaySound2D("ComboSound3");
                 break;
-        }
-
-        if (comboSounds.Length >= currentCombo && comboSounds[currentCombo - 1] != null)
-        {
-            audioSource.PlayOneShot(comboSounds[currentCombo - 1]);
         }
     }
 
@@ -110,5 +110,10 @@ public class Combo : MonoBehaviour
         canReceiveInput = true;
         inputQueued = false;
         animator.SetBool(IsComboActive, false);
+    }
+
+    private void Passos()
+    {
+        soundManager.PlaySound2D("PassosSound");
     }
 }

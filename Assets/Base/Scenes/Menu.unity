@@ -2932,6 +2932,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 212971026275759962, guid: 50936cccdb69523458c1b42052ebafff, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 295497540222988684, guid: 50936cccdb69523458c1b42052ebafff, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -5185,6 +5189,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3341476464550455547, guid: 5bf6f3da9221f924b98abb5554390d1e, type: 3}
+      propertyPath: soundEffects.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3341476464550455547, guid: 5bf6f3da9221f924b98abb5554390d1e, type: 3}
+      propertyPath: soundEffects.Array.data[6].groupID
+      value: PassosSound
+      objectReference: {fileID: 0}
+    - target: {fileID: 3341476464550455547, guid: 5bf6f3da9221f924b98abb5554390d1e, type: 3}
+      propertyPath: soundEffects.Array.data[7].groupID
+      value: Run
+      objectReference: {fileID: 0}
+    - target: {fileID: 3341476464550455547, guid: 5bf6f3da9221f924b98abb5554390d1e, type: 3}
+      propertyPath: soundEffects.Array.data[6].clips.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3341476464550455547, guid: 5bf6f3da9221f924b98abb5554390d1e, type: 3}
+      propertyPath: soundEffects.Array.data[7].clips.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3341476464550455547, guid: 5bf6f3da9221f924b98abb5554390d1e, type: 3}
+      propertyPath: soundEffects.Array.data[6].clips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: a42a562d097aea0488463934ec8bede8, type: 3}
+    - target: {fileID: 3341476464550455547, guid: 5bf6f3da9221f924b98abb5554390d1e, type: 3}
+      propertyPath: soundEffects.Array.data[7].clips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 9e4d23e42db1814438fbf7bf1c3a5f75, type: 3}
     - target: {fileID: 3473328934696095285, guid: 5bf6f3da9221f924b98abb5554390d1e, type: 3}
       propertyPath: m_Name
       value: AudioManager

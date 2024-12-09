@@ -5,8 +5,8 @@ using UnityEngine;
 public class JumpStateBehaviour : StateMachineBehaviour
 {
     private AudioSource audioSource;
-    public AudioClip audioJump;
-    public AudioClip audioLand;
+    public string soundJumpName;
+    public bool loopJump = false;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -15,8 +15,8 @@ public class JumpStateBehaviour : StateMachineBehaviour
         {
             animator.SetBool("JumpUp", false);
             audioSource = animator.transform.GetComponent<AudioSource>();
-            audioSource.clip = audioJump;
-            audioSource.Play();
+            audioSource.loop = loopJump;
+            SoundManager.Instance.PlaySound2D(soundJumpName);
         }
     }
 
@@ -30,6 +30,8 @@ public class JumpStateBehaviour : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.SetBool("JumpUp", false);
+        audioSource.Stop();
+        audioSource.loop = false;
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

@@ -54,6 +54,8 @@ public class CharacterController2D : MonoBehaviour
 	private float originalHeight; // Para armazenar a altura original do collider
 	private Vector2 originalCenter; // Para armazenar o centro original do collider
 
+	[SerializeField] private LayerMask collisionMask; // Adicione esta linha para definir a máscara de colisão
+
 	public bool IsGrounded // Propriedade pública para acessar m_Grounded
 	{
 		get { return m_Grounded; }
@@ -196,7 +198,7 @@ public class CharacterController2D : MonoBehaviour
 				particleJumpDown.Play();
 				particleJumpUp.Play();
 			}
-			else if (!m_Grounded && jump && canDoubleJump && !isWallSliding)
+			else if (!m_Grounded && jump && canDoubleJump && !isWallSliding && !IsCollidingAbove())
 			{
 				canDoubleJump = false;
 				m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, 0);
@@ -374,5 +376,12 @@ public class CharacterController2D : MonoBehaviour
 			capsuleCollider.offset = originalCenter; // Restaura o centro original do collider
 			animator.SetBool("IsCrouching", false); // Define a animação de voltar à posição normal
 		}
+	}
+
+	private bool IsCollidingAbove()
+	{
+		// Raycast para verificar se há colisão acima do jogador, ignorando a camada do jogador
+		RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.up, 1f, collisionMask); // Ajuste a distância conforme necessário
+		return hit.collider != null; // Retorna verdadeiro se houver uma colisão
 	}
 }

@@ -59,6 +59,15 @@ MonoBehaviour:
   - groupID: Houver
     clips:
     - {fileID: 8300000, guid: 4f4a817613d2db342ba4a5a587ce8e6c, type: 3}
+  - groupID: JumpUp
+    clips:
+    - {fileID: 8300000, guid: 6b4318e8c46fddf44b9ea7261b120b50, type: 3}
+  - groupID: JumpLand
+    clips:
+    - {fileID: 8300000, guid: 5325a422cba6d1847970f9a58eae4cb7, type: 3}
+  - groupID: Run
+    clips:
+    - {fileID: 8300000, guid: 9e4d23e42db1814438fbf7bf1c3a5f75, type: 3}
 --- !u!114 &5821186343944144562
 MonoBehaviour:
   m_ObjectHideFlags: 0

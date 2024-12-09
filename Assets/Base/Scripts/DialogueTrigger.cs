@@ -28,6 +28,7 @@ public class Dialogue
 public class DialogueTrigger : MonoBehaviour
 {
     public Dialogue dialogue;
+    public Animator playerAnimator;
 
     public void TriggerDialogue()
     {
@@ -55,7 +56,14 @@ public class DialogueTrigger : MonoBehaviour
             return;
         }
 
-        DialogueManager.Instance.StartDialogue(dialogue);
+        if (playerAnimator != null && playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Iddle"))
+        {
+            DialogueManager.Instance.StartDialogue(dialogue);
+        }
+        else
+        {
+            Debug.Log("O jogador não está na animação idle!");
+        }
     }
 
     private void Update()
