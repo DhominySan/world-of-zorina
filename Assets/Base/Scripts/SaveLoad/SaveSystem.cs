@@ -4,33 +4,37 @@ using UnityEngine;
 
 public static class SaveSystem
 {
-    private static string savePath = Application.persistentDataPath + "/gameSave.dat";
+    private static string savePath = Application.persistentDataPath + "/gameSave";
 
-    public static void SaveGame(SaveData data)
+    // Salva os dados em um slot específico (1, 2 ou 3)
+    public static void SaveGame(SaveData data, int slot)
     {
+        string filePath = savePath + slot + ".dat"; // Exemplo: gameSave1.dat, gameSave2.dat, etc.
         BinaryFormatter formatter = new BinaryFormatter();
-        using (FileStream stream = new FileStream(savePath, FileMode.Create))
+        using (FileStream stream = new FileStream(filePath, FileMode.Create))
         {
             formatter.Serialize(stream, data);
         }
-        Debug.Log("Jogo salvo em: " + savePath);
+        Debug.Log("Jogo salvo no slot " + slot + " em: " + filePath);
     }
 
-    public static SaveData LoadGame()
+    // Carrega os dados de um slot específico (1, 2 ou 3)
+    public static SaveData LoadGame(int slot)
     {
-        if (File.Exists(savePath))
+        string filePath = savePath + slot + ".dat";
+        if (File.Exists(filePath))
         {
             BinaryFormatter formatter = new BinaryFormatter();
-            using (FileStream stream = new FileStream(savePath, FileMode.Open))
+            using (FileStream stream = new FileStream(filePath, FileMode.Open))
             {
                 SaveData data = formatter.Deserialize(stream) as SaveData;
-                Debug.Log("Jogo carregado.");
+                Debug.Log("Jogo carregado do slot " + slot);
                 return data;
             }
         }
         else
         {
-            Debug.LogWarning("Arquivo de save não encontrado.");
+            Debug.LogWarning("Arquivo de save não encontrado no slot " + slot);
             return null;
         }
     }
