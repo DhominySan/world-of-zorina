@@ -6,6 +6,7 @@ using UnityEngine;
 public class WeaponData : ScriptableObject
 {
    [Header("Weapon Info")]
+   public int weaponID;
    public string weaponName;
    public Sprite weaponSprite;
 
