@@ -1,4 +1,5 @@
 using TMPro;
+using UnityEditor.U2D;
 using UnityEngine;
 
 public class WeaponDropped : MonoBehaviour
@@ -8,12 +9,16 @@ public class WeaponDropped : MonoBehaviour
     private Transform textObject;
     private TextMeshPro itemTextMesh;
     [SerializeField] private WeaponData weaponData;
+    private SpriteRenderer droppedWeaponSprite;
 
     public void Start()
     {
         worldSpaceCanvas = FindObjectOfType<Canvas>();
         textObject = transform.Find("ItemText");
         textObject.gameObject.SetActive(false);
+
+        droppedWeaponSprite = GetComponent<SpriteRenderer>();
+        droppedWeaponSprite.sprite = weaponData.weaponSprite;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -30,7 +35,7 @@ public class WeaponDropped : MonoBehaviour
         if (other.gameObject.CompareTag("Player") && Input.GetKeyDown(KeyCode.E))
         {
             Debug.Log("Weapon: " + weaponData.name);
-            GameObject droppedWeaponObject = textObject.gameObject.transform.parent.gameObject;
+            GameObject droppedWeaponObject = textObject.transform.parent.gameObject;
             Destroy(droppedWeaponObject);
         }
     }
