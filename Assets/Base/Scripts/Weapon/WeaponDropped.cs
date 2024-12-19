@@ -5,20 +5,33 @@ using UnityEngine;
 public class WeaponDropped : MonoBehaviour
 {
 
-    private Canvas worldSpaceCanvas;
-    private Transform textObject;
-    private TextMeshPro itemTextMesh;
+    [SerializeField] private Canvas worldSpaceCanvas;
+    [SerializeField] private Transform textObject;
     [SerializeField] private WeaponData weaponData;
     private SpriteRenderer droppedWeaponSprite;
+    private GameObject player;
+
+    private bool canBePickedUp;
+
+    private void Awake() {
+        droppedWeaponSprite = GetComponent<SpriteRenderer>();
+    }
 
     public void Start()
     {
-        worldSpaceCanvas = FindObjectOfType<Canvas>();
-        textObject = transform.Find("ItemText");
         textObject.gameObject.SetActive(false);
-
-        droppedWeaponSprite = GetComponent<SpriteRenderer>();
+        player = GameObject.FindWithTag("Player");
         droppedWeaponSprite.sprite = weaponData.weaponSprite;
+    }
+
+    private void Update() {
+        if(canBePickedUp && Input.GetKeyDown(KeyCode.E)){
+            Debug.Log("Weapon: " + weaponData.name);
+            WeaponManager weaponManager = player.GetComponentInChildren<WeaponManager>();
+            weaponManager.WeaponPickup(weaponData);
+            GameObject droppedWeaponObject = textObject.transform.parent.gameObject;
+            Destroy(droppedWeaponObject);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -27,16 +40,7 @@ public class WeaponDropped : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             textObject.gameObject.SetActive(true);
-        }
-    }
-
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Player") && Input.GetKeyDown(KeyCode.E))
-        {
-            Debug.Log("Weapon: " + weaponData.name);
-            GameObject droppedWeaponObject = textObject.transform.parent.gameObject;
-            Destroy(droppedWeaponObject);
+            canBePickedUp = true;
         }
     }
 
@@ -45,6 +49,7 @@ public class WeaponDropped : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             textObject.gameObject.SetActive(false);
+            canBePickedUp = false;
         }
     }
 

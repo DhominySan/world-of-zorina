@@ -52,6 +52,7 @@ public class Attack : MonoBehaviour
 
 	public void DoDamage()
 	{
+		Debug.Log("DMG = " + dmgValue);
 		dmgValue = Mathf.Abs(dmgValue);
 		Collider2D[] collidersEnemies = Physics2D.OverlapCircleAll(attackCheck.position, 0.9f);
 		for (int i = 0; i < collidersEnemies.Length; i++)
@@ -72,4 +73,8 @@ public class Attack : MonoBehaviour
         canAttack = true;
         Debug.Log("Ataque habilitado!");
     }
+
+	public void AdjustDamageForWeapon(float weaponDamange){
+		dmgValue = weaponDamange;
+	}
 }
